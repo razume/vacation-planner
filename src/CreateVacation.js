@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { format } from './utils';
 import moment from 'moment';
 
 const today = () => moment().format('MM/DD/YYYY');

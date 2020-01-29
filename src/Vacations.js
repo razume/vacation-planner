@@ -1,5 +1,5 @@
 import React from 'react';
-import { diff, format } from './utils';
+import moment from 'moment';
 
 export default function Vacations({ vacations, destroyVacation }) {
   return (
@@ -8,8 +8,10 @@ export default function Vacations({ vacations, destroyVacation }) {
         return (
           <li className="entry" key={vacation.id}>
             <button onClick={() => destroyVacation(vacation)}>X</button>
-            {format(vacation.startDate)} to {format(vacation.endDate)} (
-            {diff(vacation)} days)
+            {moment(vacation.startDate).format('dddd MM/DD/YYYY')} to{' '}
+            {moment(vacation.endDate).format('dddd MM/DD/YYYY')} (
+            {moment(vacation.endDate).diff(moment(vacation.startDate), 'days')}{' '}
+            days)
           </li>
         );
       })}
